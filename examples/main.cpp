@@ -1,7 +1,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include<vector>
+#include <vector>
+
+#include <bressenham/bressenham.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -12,13 +14,6 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
 
 void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
-}
-
-void makePixel(std::vector<GLubyte>& pixelBuffer, unsigned int x, unsigned int y) {
-    int position = (x + y*WIDTH) * 3;
-    pixelBuffer[position] = 255;
-    pixelBuffer[position + 1] = 255;
-    pixelBuffer[position + 2] = 255;
 }
 
 int main() {
@@ -42,21 +37,28 @@ int main() {
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    Bressenham::Figure figure(WIDTH, HEIGHT);
+    figure.setColor({255, 255, 255});
+    figure.addLine(0, 100, 150, 0); // -1 < m < 0: white
+    figure.setColor({255, 0, 0});
+    figure.addLine(0, 150, 150, 0); // m = -1: red
+    figure.setColor({0, 255, 0});
+    figure.addLine(0, 200, 150, 0); // -inf < m < -1: green
+    figure.setColor({0, 0, 255});
+    figure.addLine(600, 50, 600, 500); // m = inf: blue
+    figure.setColor({255, 255, 0});
+    figure.addLine(300, 250, 800, 250); // m = 0: yellow
+    // figure.setColor({0, 255, 255});
+    // //
+    // figure.setColor({255, 0, 255});
+
     while (!glfwWindowShouldClose(window)) {
         processInput(window);
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        std::vector<GLubyte> pixelBuffer(WIDTH*HEIGHT*3);
-        makePixel(pixelBuffer, 20, 30);
-        glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, pixelBuffer.data());
-
-        // GLint x = 200, y = 200;
-
-        // glBegin(GL_POINTS);
-        // glVertex2i(200, 200);
-        // glEnd();
+        figure.draw();
 
         glfwSwapBuffers(window);
         glfwPollEvents();
