@@ -16,10 +16,6 @@ void Bressenham::Figure::addPixel(uint x, uint y) {
     pixelBuffer[pos + 2] = color.b;
 }
 
-// void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2);
-// void Bressenham::Figure::addRectangle(uint xmin, uint ymin, uint xmax, uint ymax);
-// void Bressenham::Figure::addEllipse(uint cx, uint cy, uint a, uint b);
-
 void Bressenham::Figure::draw() {
     glDrawPixels(width, height, GL_RGB, GL_UNSIGNED_BYTE, pixelBuffer.data());
 }

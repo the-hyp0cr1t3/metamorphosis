@@ -22,9 +22,8 @@ class Figure {
     void setColor(Color color);
     void addPixel(uint x, uint y);
     void addLine(uint x1, uint y1, uint x2, uint y2);
-    // void addRectangle(uint xmin, uint ymin, uint xmax, uint ymax);
     void addCircle(uint cx, uint cy, uint radius);
-    // void addEllipse(uint cx, uint cy, uint a, uint b);
+    void addEllipse(uint cx, uint cy, uint a, uint b);
     void draw();
 };
 

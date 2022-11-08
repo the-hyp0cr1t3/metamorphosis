@@ -48,9 +48,8 @@ int main() {
     figure.addLine(600, 50, 600, 500); // m = inf: blue
     figure.setColor({255, 255, 0});
     figure.addLine(300, 250, 800, 250); // m = 0: yellow
-    // figure.setColor({0, 255, 255});
-    // //
-    // figure.setColor({255, 0, 255});
+    figure.setColor({0, 255, 255});
+    figure.addEllipse(400, 400, 100, 150);
 
     while (!glfwWindowShouldClose(window)) {
         processInput(window);

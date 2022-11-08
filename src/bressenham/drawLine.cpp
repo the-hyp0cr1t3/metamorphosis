@@ -1,5 +1,4 @@
 #include <bressenham/bressenham.h>
-#include<iostream>
 
 void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
     if (y1 > y2) {
