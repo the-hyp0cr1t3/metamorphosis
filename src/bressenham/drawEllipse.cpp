@@ -2,9 +2,9 @@
 
 void Bressenham::Figure::addEllipse(uint cx, uint cy, uint a, uint b) {
     auto mirror4 = [this, cx, cy](int x, int y) {
-        for (int sx : {-1, 1}) {
-            for (int sy : {-1, 1}) this->addPixel(sx * x + cx, sy * y + cy);
-        }
+        for (int sx : {-1, 1})
+            for (int sy : {-1, 1})
+                this->addPixel(sx * x + cx, sy * y + cy);
     };
 
     uint x = 0, y = b;

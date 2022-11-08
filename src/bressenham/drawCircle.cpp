@@ -11,7 +11,7 @@ void Bressenham::Figure::addCircle(uint cx, uint cy, uint radius) {
     };
 
     uint x = 0, y = radius;
-    int  d = 1 - radius, dE = 3, dSE = -2 * radius + 5;
+    int d = 1 - radius, dE = 3, dSE = -2 * radius + 5;
     mirror8(x, y);
 
     while (y > x) {
