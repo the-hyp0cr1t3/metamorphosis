@@ -1,4 +1,5 @@
 #include <bressenham/bressenham.h>
+#include<iostream>
 
 void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
     if (y1 > y2) {
@@ -8,7 +9,7 @@ void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
 
     int dx = x2 - x1, dy = y2 - y1;
     int d = 2 * dy - dx;
-    int dE = 2 * dy, dNE = 2 * (dy - dx), dN = -2 * dx, dNW = -2 * (dy - dx), dW = -2 * dy;
+    int dE = 2 * dy, dNE = 2 * (dy - dx), dN = -2 * dx, dNW = -2 * (dy + dx), dW = -2 * dy;
 
     int x = x1, y = y1;
     addPixel(x, y);
@@ -24,6 +25,7 @@ void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
             addPixel(x, y);
         }
     } else if (dx < dy && dx >= 0) {  // 1 < m < inf
+
         while (y < y2) {
             if (d >= 0) d += dN;
             else {
@@ -35,7 +37,7 @@ void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
         }
     } else if (-dx < dy && dx < 0) {  // -inf < m < -1
         while (y < y2) {
-            if (d >= 0) d += dN;
+            if (d < 0) d += dN;
             else {
                 d += dNW;
                 x--;
@@ -45,7 +47,7 @@ void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
         }
     } else {  // -1 <= m < 0
         while (x > x2) {
-            if (d < 0) d += dW;
+            if (d >= 0) d += dW;
             else {
                 d += dNW;
                 y++;
