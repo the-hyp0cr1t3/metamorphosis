@@ -9,7 +9,14 @@ Checks: "*,\
   -llvm-header-guard,\
   -llvm-include-order,\
   -llvmlibc-*,\
-  -misc-non-private-member-variables-in-classes"
+  -misc-non-private-member-variables-in-classes,\
+  -bugprone-narrowing-conversions,\
+  -readability-braces-around-statements,\
+  -google-readability-braces-around-statements,\
+  -hicpp-braces-around-statements,\
+  -cppcoreguidelines-narrowing-conversions,\
+  -cppcoreguidelines-avoid-magic-numbers,\
+  -readability-magic-numbers"
 WarningsAsErrors: ''
 CheckOptions:
   - key: 'bugprone-argument-comment.StrictMode'

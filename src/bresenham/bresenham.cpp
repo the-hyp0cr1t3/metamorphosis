@@ -3,38 +3,38 @@
 #include <vector>
 #include <iostream>
 
-bresenham::Figure::Figure(uint width, uint height)
-  : pixelBuffer(width * height * 3), width(width), height(height) {}
+bresenham::figure::figure(uint width, uint height)
+  : m_width(width), m_height(height), m_pixel_buffer(width * height * 3) {}
 
-void bresenham::Figure::setColor(Color color) { this->color = color; }
+void bresenham::figure::set_color(color rgb) { m_rgb = rgb; }
 
-bresenham::Color bresenham::Figure::getPixelColor(uint x, uint y) {
-    uint pos = (x + y * width) * 3;
-    return {pixelBuffer[pos], pixelBuffer[pos + 1], pixelBuffer[pos + 2]};
+auto bresenham::figure::get_pixel_color(uint x, uint y) -> bresenham::color {
+    uint pos = (x + y * m_width) * 3;
+    return {m_pixel_buffer[pos], m_pixel_buffer[pos + 1], m_pixel_buffer[pos + 2]};
 }
 
-void bresenham::Figure::addPixel(uint x, uint y) {
-    if (x >= width || y >= height) return;
+void bresenham::figure::add_pixel(uint x, uint y) {
+    if (x >= m_width || y >= m_height) return;
 
-    uint pos = (x + y * width) * 3;
-    pixelBuffer[pos] = color.r;
-    pixelBuffer[pos + 1] = color.g;
-    pixelBuffer[pos + 2] = color.b;
+    uint pos = (x + y * m_width) * 3;
+    m_pixel_buffer[pos] = m_rgb.r;
+    m_pixel_buffer[pos + 1] = m_rgb.g;
+    m_pixel_buffer[pos + 2] = m_rgb.b;
 }
 
-void bresenham::Figure::fill(uint ix, uint iy, Color boundaryColor) {
-    if (ix >= width || iy >= height || color == getPixelColor(ix, iy)
-      || boundaryColor == getPixelColor(ix, iy))
+void bresenham::figure::fill(uint ix, uint iy, color boundary_color) {
+    if (ix >= m_width || iy >= m_height || m_rgb == get_pixel_color(ix, iy)
+      || boundary_color == get_pixel_color(ix, iy))
         return;
 
-    addPixel(ix, iy);
+    add_pixel(ix, iy);
 
-    fill(ix - 1, iy, boundaryColor);
-    fill(ix + 1, iy, boundaryColor);
-    fill(ix, iy - 1, boundaryColor);
-    fill(ix, iy + 1, boundaryColor);
+    fill(ix - 1, iy, boundary_color);
+    fill(ix + 1, iy, boundary_color);
+    fill(ix, iy - 1, boundary_color);
+    fill(ix, iy + 1, boundary_color);
 }
 
-void bresenham::Figure::draw() {
-    glDrawPixels(width, height, GL_RGB, GL_UNSIGNED_BYTE, pixelBuffer.data());
+void bresenham::figure::draw() {
+    glDrawPixels(m_width, m_height, GL_RGB, GL_UNSIGNED_BYTE, m_pixel_buffer.data());
 }
