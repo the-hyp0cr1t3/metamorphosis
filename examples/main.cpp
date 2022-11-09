@@ -12,7 +12,8 @@ void framebuffer_size_callback(GLFWwindow * /*window*/, int width, int height) {
 }
 
 void process_input(GLFWwindow *window) {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, 1);
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, 1);
 }
 
 auto main() -> int {
@@ -21,7 +22,8 @@ auto main() -> int {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
-    GLFWwindow *window = glfwCreateWindow(screen_width, screen_height, "DontLearnOpenGL", nullptr, nullptr);
+    GLFWwindow *window = glfwCreateWindow(
+      screen_width, screen_height, "DontLearnOpenGL", nullptr, nullptr);
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -29,7 +31,8 @@ auto main() -> int {
     }
     glfwMakeContextCurrent(window);
 
-    if (gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)) == 0) {
+    if (gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))
+      == 0) {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }

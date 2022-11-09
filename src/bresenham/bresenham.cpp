@@ -10,7 +10,8 @@ void bresenham::figure::set_color(color rgb) { m_rgb = rgb; }
 
 auto bresenham::figure::get_pixel_color(uint x, uint y) -> bresenham::color {
     uint pos = (x + y * m_width) * 3;
-    return {m_pixel_buffer[pos], m_pixel_buffer[pos + 1], m_pixel_buffer[pos + 2]};
+    return {
+      m_pixel_buffer[pos], m_pixel_buffer[pos + 1], m_pixel_buffer[pos + 2]};
 }
 
 void bresenham::figure::add_pixel(uint x, uint y) {
@@ -36,5 +37,6 @@ void bresenham::figure::fill(uint ix, uint iy, color boundary_color) {
 }
 
 void bresenham::figure::draw() {
-    glDrawPixels(m_width, m_height, GL_RGB, GL_UNSIGNED_BYTE, m_pixel_buffer.data());
+    glDrawPixels(
+      m_width, m_height, GL_RGB, GL_UNSIGNED_BYTE, m_pixel_buffer.data());
 }

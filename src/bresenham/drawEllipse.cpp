@@ -24,7 +24,8 @@ void bresenham::figure::add_ellipse(uint cx, uint cy, uint a, uint b) {
         mirror4(x, y);
     }
 
-    int d2 = b2 * (2 * x + 1) * (2 * x + 1) + 4 * a2 * (y - 1) * (y - 1) - 4 * a2 * b2;
+    int d2 =
+      b2 * (2 * x + 1) * (2 * x + 1) + 4 * a2 * (y - 1) * (y - 1) - 4 * a2 * b2;
     while (y > 0) {
         if (d2 >= 0) {
             d2 += 4 * a2 * (-2 * y + 3);
