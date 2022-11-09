@@ -1,0 +1,6 @@
+DOXYFILE = 'Doxyfile'
+
+LINKS_NAVBAR1 = [
+    ("Pages", 'pages', [("About", 'about')]),
+    ("Namespaces", 'namespaces', [])
+]
