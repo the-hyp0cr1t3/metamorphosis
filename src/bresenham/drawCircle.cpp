@@ -1,6 +1,6 @@
-#include <bressenham/bressenham.h>
+#include <bresenham/bresenham.h>
 
-void Bressenham::Figure::addCircle(uint cx, uint cy, uint radius) {
+void bresenham::Figure::addCircle(uint cx, uint cy, uint radius) {
     auto mirror8 = [this, cx, cy](int x, int y) {
         for (int sx : {-1, 1}) {
             for (int sy : {-1, 1}) {

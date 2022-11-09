@@ -1,6 +1,6 @@
-#include <bressenham/bressenham.h>
+#include <bresenham/bresenham.h>
 
-void Bressenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
+void bresenham::Figure::addLine(uint x1, uint y1, uint x2, uint y2) {
     if (y1 > y2) {
         std::swap(x1, x2);
         std::swap(y1, y2);

@@ -5,18 +5,17 @@
 
 using uint = unsigned int;
 
-namespace Bressenham {
+namespace bresenham {
 
 struct Color {
     GLubyte r = 0, g = 0, b = 0;
 
-    bool operator==(const Color& other) const {
-      return r == other.r && g == other.g && b == other.b;
+    bool operator==(const Color &other) const {
+        return r == other.r && g == other.g && b == other.b;
     }
 };
 
 class Figure {
-   private:
     uint width, height;
     std::vector<GLubyte> pixelBuffer;
     Color color;
@@ -33,4 +32,4 @@ class Figure {
     void draw();
 };
 
-}  // namespace Bressenham
+}  // namespace bresenham
