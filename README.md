@@ -26,20 +26,6 @@ make
 sudo make install
 ```
 
-<details>
-    <summary>Platform agnostic</summary>
-
-```bash
-# Build
-cmake -S . -B build
-cmake --build build
-
-# Install
-sudo cmake --install build
-```
-
-</details>
-
 ## Usage
 
 ```console
