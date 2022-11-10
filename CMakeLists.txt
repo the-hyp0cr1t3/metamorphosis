@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.20)
 
 project(
   Bresenham
@@ -92,7 +92,7 @@ if(PROJECT_IS_TOP_LEVEL)
   set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard (11/14/17/20/...)") # -std=c++17
   set(CMAKE_CXX_EXTENSIONS OFF)         # no gnu++17
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
+  #set(CMAKE_CXX_FLAGS "/W4 -Wl,--stack,1073741824")
   set(CMAKE_CXX_FLAGS_DEBUG "-g")
   set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
@@ -115,9 +115,9 @@ add_subdirectory(src)
 # Examples
 #---------------------------
 
-if(Bresenham_BUILD_EXAMPLES)
+#if(Bresenham_BUILD_EXAMPLES)
   add_subdirectory(examples)
-endif()
+#endif()
 
 #---------------------------
 # Documentation

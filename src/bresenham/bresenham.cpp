@@ -4,7 +4,7 @@
 #include <iostream>
 
 bresenham::figure::figure(uint width, uint height)
-  : m_width(width), m_height(height), m_pixel_buffer(width * height * 3) {}
+  : m_width(width), m_height(height), m_pixel_buffer(width * height * 3, 255) {}
 
 void bresenham::figure::set_color(color rgb) { m_rgb = rgb; }
 
