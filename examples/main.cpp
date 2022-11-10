@@ -20,18 +20,20 @@ void process_input(GLFWwindow *window) {
 }
 
 void render_frame(std::string file_name, bresenham::figure &figure) { 
-    std::ifstream ifs = std::ifstream(file_name, std::ios_base::in);
-    ifs.open(file_name);
-    if (!ifs.is_open()) { 
-        std::cerr << "File could not be opened\n";
+    FILE* fp = freopen(file_name.c_str(), "r", stdin);
+    if (fp == NULL) { 
+        std::cout << "Error while opening file" << std::endl;
         return;
     }
 
+    std::cout << "File opened" << std::endl;
     std::string command;
-    while (std::getline(ifs, command)) {
-        std::istringstream iss(command);
+    while (std::getline(std::cin, command)) {
+        std::cout << command << " ";
+        std::stringstream iss(command);
         std::string operation;
         iss >> operation;
+        std::cout << operation << std::endl;
         if (operation == "al") {
             int x1, y1, x2, y2;
             iss >> x1 >> y1 >> x2 >> y2;
@@ -51,6 +53,7 @@ void render_frame(std::string file_name, bresenham::figure &figure) {
             continue;
         }
     }
+    std::cout << "Finished reading file" << std::endl;
 }
 
 auto main() -> int {
@@ -60,7 +63,7 @@ auto main() -> int {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
     GLFWwindow *window = glfwCreateWindow(
-      screen_width, screen_height, "DontLearnOpenGL", nullptr, nullptr);
+      screen_width, screen_height, "CGassignment", nullptr, nullptr);
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -78,20 +81,24 @@ auto main() -> int {
 
     bresenham::figure figure(screen_width, screen_height);
     figure.set_color({0, 0, 0});
-    render_frame("frames/frame-1.txt", figure);
-    //figure.add_line(0, 100, 150, 0);  // -1 < m < 0: white
-    //figure.set_color({255, 0, 0});
-    //figure.add_line(0, 150, 150, 0);  // m = -1: red
-    //figure.set_color({0, 255, 0});
-    //figure.add_line(0, 200, 150, 0);  // -inf < m < -1: green
-    //figure.set_color({0, 0, 255});
-    //figure.add_line(600, 50, 600, 500);  // m = inf: blue
-    //figure.set_color({255, 255, 0});
-    //figure.add_line(300, 250, 800, 250);  // m = 0: yellow
-    //figure.set_color({0, 255, 255});
-    //figure.add_ellipse(400, 400, 100, 150);
-    //figure.set_color({255, 255, 0});
-    //figure.fill(400, 400, {0, 255, 255});
+    
+    // Render a frame using commands from a text file
+    // render_frame("absolute_path_to_frame", figure);
+    
+    // Example demo
+    // figure.add_line(0, 100, 150, 0);  // -1 < m < 0: white
+    // figure.set_color({255, 0, 0});
+    // figure.add_line(0, 150, 150, 0);  // m = -1: red
+    // figure.set_color({0, 255, 0});
+    // figure.add_line(0, 200, 150, 0);  // -inf < m < -1: green
+    // figure.set_color({0, 0, 255});
+    // figure.add_line(600, 50, 600, 500);  // m = inf: blue
+    // figure.set_color({255, 255, 0});
+    // figure.add_line(300, 250, 800, 250);  // m = 0: yellow
+    // figure.set_color({0, 255, 255});
+    // figure.add_ellipse(400, 400, 100, 150);
+    // figure.set_color({255, 255, 0});
+    // figure.fill(400, 400, {0, 255, 255});
 
     while (glfwWindowShouldClose(window) == 0) {
         process_input(window);

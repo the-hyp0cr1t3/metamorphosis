@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\examples",
+    "\\frames"
   ],
-  "SelectedNode": "\\cmake",
+  "SelectedNode": "\\frames\\frame-1.txt",
   "PreviewInSolutionExplorer": false
 }
