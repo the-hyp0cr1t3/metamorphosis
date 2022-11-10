@@ -19,10 +19,10 @@ void process_input(GLFWwindow *window) {
         glfwSetWindowShouldClose(window, 1);
 }
 
-void render_frame(std::string file_name, bresenham::figure &figure) { 
+void render_frame(std::string file_name, bresenham::figure &figure) {
     std::ifstream ifs = std::ifstream(file_name, std::ios_base::in);
     ifs.open(file_name);
-    if (!ifs.is_open()) { 
+    if (!ifs.is_open()) {
         std::cerr << "File could not be opened\n";
         return;
     }
