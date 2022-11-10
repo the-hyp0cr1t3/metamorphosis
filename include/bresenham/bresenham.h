@@ -1,8 +1,8 @@
 /**
- * @file bresenham.h
- * @brief Describes a struct to represent color, a class to represent a Figure in a namespace called bresenham
+ * \file bresenham.h
+ * \brief Describes a struct to represent color, a class to represent a Figure in a namespace called bresenham
  * 
- * @copyright Copyright (c) 2022
+ * \copyright Copyright (c) 2022
  * 
  */
 #pragma once
@@ -12,13 +12,17 @@
 
 using uint = unsigned int;
 
-/**
+/*!
+ * \namespace bresenham
+ *
  * The Bresenham midpoint algorithms for rasterization
  */
 namespace bresenham {
 
 /**
- * @brief   Color represented in the form of RGB values
+ * \struct color
+ *
+ * \brief   Color represented in the form of RGB values
  */
 struct color {
     GLubyte r = 0, g = 0, b = 0;
@@ -28,8 +32,10 @@ struct color {
     }
 };
 
-/**
- * @brief The Figure class represents the figure that will be displayed. Different primitives can be drawn (added to the figure) and rendered.
+/*!
+ * \class figure
+ *
+ * \brief The Figure class represents the figure that will be displayed. Different primitives can be drawn (added to the figure) and rendered.
  * 
  */
 class figure {
@@ -47,68 +53,68 @@ class figure {
    public:
 
     /**
-     * @brief Construct a new empty figure object
+     * \brief Construct a new empty figure object
      * 
-     * @param width The width of the figure in pixels
-     * @param height The height of the figure in pixels
+     * \param width The width of the figure in pixels
+     * \param height The height of the figure in pixels
      */
     figure(uint width, uint height);
 
     /**
-     * @brief Set the current color (The color used to dra primitives)
+     * \brief Set the current color (The color used to dra primitives)
      * 
-     * @param rgb The color
+     * \param rgb The color
      */
     void set_color(color rgb);
 
     /**
-     * @brief Draws a single pixel
+     * \brief Draws a single pixel
      * 
-     * @param x The X coordinate of the pixel (0 <= x < width) 
-     * @param y The Y coordinate of the pixel (0 <= y < height)
+     * \param x The X coordinate of the pixel (0 <= x < width)
+     * \param y The Y coordinate of the pixel (0 <= y < height)
      */
     void add_pixel(uint x, uint y);
 
     /**
-     * @brief Given two pixels, draws a straight line between the two pixels using the Bressenham midpoint algorithm
+     * \brief Given two pixels, draws a straight line between the two pixels using the Bressenham midpoint algorithm
      * 
-     * @param x1 The X coordinate of the first pixel (0 <= x < width)
-     * @param y1 The Y coordinate of the first pixel (0 <= y < height)
-     * @param x2 The X coordinate of the second pixel (0 <= x < width)
-     * @param y2 The Y coordinate of the second pixel (0 <= y < height)
+     * \param x1 The X coordinate of the first pixel (0 <= x < width)
+     * \param y1 The Y coordinate of the first pixel (0 <= y < height)
+     * \param x2 The X coordinate of the second pixel (0 <= x < width)
+     * \param y2 The Y coordinate of the second pixel (0 <= y < height)
      */
     void add_line(uint x1, uint y1, uint x2, uint y2);
 
     /**
-     * @brief Draws a circle using the midpoint algorithm
+     * \brief Draws a circle using the midpoint algorithm
      * 
-     * @param cx The X coordinate of the center of the circle (0 <= cx < width)
-     * @param cy The Y coordinate of the center of the circle (0 <= cy < height)
-     * @param radius The radius of the circle in pixels
+     * \param cx The X coordinate of the center of the circle (0 <= cx < width)
+     * \param cy The Y coordinate of the center of the circle (0 <= cy < height)
+     * \param radius The radius of the circle in pixels
      */
     void add_circle(uint cx, uint cy, uint radius);
 
     /**
-     * @brief Drawn an axes aligned ellipse using the midpoint algorithm
+     * \brief Drawn an axes aligned ellipse using the midpoint algorithm
      * 
-     * @param cx The X coordinate of the center of the ellipse (0 <= cx < width)
-     * @param cy The Y coordinate of the center of the ellipse (0 <= cy < height)
-     * @param a The length of the horizontal axis in pixels
-     * @param b The length of the vertical axis in pixels
+     * \param cx The X coordinate of the center of the ellipse (0 <= cx < width)
+     * \param cy The Y coordinate of the center of the ellipse (0 <= cy < height)
+     * \param a The length of the horizontal axis in pixels
+     * \param b The length of the vertical axis in pixels
      */
     void add_ellipse(uint cx, uint cy, uint a, uint b);
 
     /**
-     * @brief Fills a bounded region using the current color using the Boundary Fill algorithm
+     * \brief Fills a bounded region using the current color using the Boundary Fill algorithm
      * 
-     * @param ix The X coordinate of an interior point in the region (0 <= ix < width)
-     * @param iy The Y coordinate of an interior point in the region (0 <= iy < height)
-     * @param boundary_color The color of the boundary
+     * \param ix The X coordinate of an interior point in the region (0 <= ix < width)
+     * \param iy The Y coordinate of an interior point in the region (0 <= iy < height)
+     * \param boundary_color The color of the boundary
      */
     void fill(uint ix, uint iy, color boundary_color);
 
     /**
-     * @brief Renders the current figure with all the primitives in the object
+     * \brief Renders the current figure with all the primitives in the object
      * 
      */
     void draw();
