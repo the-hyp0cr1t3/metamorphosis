@@ -9,7 +9,6 @@ if(NOT glfw3_FOUND)
     glfw3
     GIT_REPOSITORY https://github.com/glfw/glfw.git
     GIT_TAG 3.3.8
-    GIT_PROGRESS TRUE
   )
 
   option(GLFW_BUILD_DOCS OFF)
