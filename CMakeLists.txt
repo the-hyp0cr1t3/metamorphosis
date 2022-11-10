@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(
-  Bresenham
+  Metamorphosis
   VERSION 1.0
   DESCRIPTION "Rasterization using Bresenham's midpoint algorithm"
   HOMEPAGE_URL "https://github.com/the-hyp0cr1t3/rasterization-algos"
