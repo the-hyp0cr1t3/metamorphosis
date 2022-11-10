@@ -7,14 +7,9 @@ Welcome to Bresenham's documentation!
 =====================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
-   code-reference/Bresenham
-
-Indices and tables
-==================
+   Bresenham
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

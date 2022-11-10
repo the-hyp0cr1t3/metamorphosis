@@ -19,9 +19,9 @@ void process_input(GLFWwindow *window) {
         glfwSetWindowShouldClose(window, 1);
 }
 
-void render_frame(std::string file_name, bresenham::figure &figure) { 
-    FILE* fp = freopen(file_name.c_str(), "r", stdin);
-    if (fp == NULL) { 
+void render_frame(std::string file_name, bresenham::figure &figure) {
+    FILE *fp = freopen(file_name.c_str(), "r", stdin);
+    if (fp == NULL) {
         std::cout << "Error while opening file" << std::endl;
         return;
     }
@@ -81,10 +81,10 @@ auto main() -> int {
 
     bresenham::figure figure(screen_width, screen_height);
     figure.set_color({0, 0, 0});
-    
+
     // Render a frame using commands from a text file
     // render_frame("absolute_path_to_frame", figure);
-    
+
     // Example demo
     // figure.add_line(0, 100, 150, 0);  // -1 < m < 0: white
     // figure.set_color({255, 0, 0});
