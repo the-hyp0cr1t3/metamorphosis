@@ -11,3 +11,6 @@ CTestTestfile.cmake
 CMakeSettings.json
 _deps
 build*/
+.vs/
+.vscode/
+todo.txt
