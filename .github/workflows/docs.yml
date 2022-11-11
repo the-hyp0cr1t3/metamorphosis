@@ -9,15 +9,14 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
+      - uses: actions/setup-python@v4
+        with: { python-version: "3.8" }
+
       - name: Install dependencies
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
         run: |
-          pip install -r docs/requirements.txt
           sudo apt-get update -q
           sudo apt-get install doxygen -q -y
+          pip install -r docs/requirements.txt
 
       - name: Build
         run: |
