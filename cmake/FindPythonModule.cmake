@@ -7,16 +7,14 @@ include(CMakePrintHelpers)
 include(FindPackageHandleStandardArgs)
 function(find_python_module module)
   # Fail if Python interpreter not known
-  cmake_print_variables(Python_EXECUTABLE)
   if(NOT Python_EXECUTABLE)
-    message(FATAL_ERROR "Use find_package(PythonInterp) first!")
+    message(FATAL_ERROR "Use find_package(Python) first!")
   endif()
   string(TOLOWER ${module} _module_lower)
   if(NOT ${_module_lower})
     if(ARGC GREATER 1 AND ARGV1 STREQUAL "REQUIRED")
       set(${module}_FIND_REQUIRED TRUE)
     endif()
-    cmake_print_variables(_module_lower)
     # Find module location
     execute_process(
       COMMAND
@@ -26,7 +24,6 @@ function(find_python_module module)
       OUTPUT_VARIABLE _${module}_location
       ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-    cmake_print_variables(module _${module}_status _${module}_location)
     if(NOT _${module}_status)
       set(${module}
           ${_${module}_location}
@@ -41,7 +38,6 @@ function(find_python_module module)
       # ERROR_QUIET
       OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-    cmake_print_variables(module _${module}_ver)
   endif()
 
   find_package_handle_standard_args(

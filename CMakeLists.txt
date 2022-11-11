@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(
-  Bresenham
+  Metamorphosis
   VERSION 1.0
-  DESCRIPTION "Rasterization using Bresenham's midpoint algorithm"
+  DESCRIPTION "Metamorphosis, a short film; Powered by Bresenham, a rasterization algorithm."
   HOMEPAGE_URL "https://github.com/the-hyp0cr1t3/rasterization-algos"
   LANGUAGES CXX C)
 
@@ -28,7 +28,7 @@ include(SupportRPATH)
 include(InstallBasicPackageFiles)
 include(AddUninstallTarget)
 
-if(Bresenham_DEVELOPER_MODE)
+if(${PROJECT_NAME}_DEVELOPER_MODE)
   include(ClangFormat)
   include(ClangTidy)
 endif()
@@ -89,8 +89,8 @@ endif()
 #---------------------------
 
 if(PROJECT_IS_TOP_LEVEL)
-  set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard (11/14/17/20/...)") # -std=c++17
-  set(CMAKE_CXX_EXTENSIONS OFF)         # no gnu++17
+  set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard (11/14/17/20/...)")
+  set(CMAKE_CXX_EXTENSIONS OFF)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
   set(CMAKE_CXX_FLAGS_DEBUG "-g")
@@ -115,15 +115,15 @@ add_subdirectory(src)
 # Examples
 #---------------------------
 
-if(Bresenham_BUILD_EXAMPLES)
-  add_subdirectory(examples)
+if(${PROJECT_NAME}_BUILD_EXAMPLES)
+  add_subdirectory(example)
 endif()
 
 #---------------------------
 # Documentation
 #---------------------------
 
-if(Bresenham_BUILD_DOCS)
+if(${PROJECT_NAME}_BUILD_DOCS)
   add_subdirectory(docs)
 endif()
 
@@ -140,12 +140,12 @@ add_install_rpath_support(
   USE_LINK_PATH)
 
 if(NOT CMAKE_SKIP_INSTALL_RULES)
-  install_basic_package_files(${PROJECT_NAME}
-    VERSION ${${PROJECT_NAME}_VERSION}
+  install_basic_package_files(Bresenham
+    VERSION ${PROJECT_VERSION}
     COMPATIBILITY AnyNewerVersion
     EXPORT Bresenham
-    VARS_PREFIX ${PROJECT_NAME}
-    NAMESPACE ${PROJECT_NAME}::
+    VARS_PREFIX Bresenham
+    NAMESPACE Bresenham::
     NO_SET_AND_CHECK_MACRO
     NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
@@ -166,7 +166,7 @@ endif()
 # Packaging
 #---------------------------
 
-set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+set(CPACK_PACKAGE_NAME Bresenham)
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
 set(CPACK_PACKAGE_VENDOR "the-hyp0cr1t3")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})

@@ -2,6 +2,8 @@
 #include <bresenham/bresenham.h>
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 bresenham::figure::figure(uint width, uint height)
   : m_width(width), m_height(height), m_pixel_buffer(width * height * 3, 255) {}
@@ -39,4 +41,46 @@ void bresenham::figure::fill(uint ix, uint iy, color boundary_color) {
 void bresenham::figure::draw() {
     glDrawPixels(
       m_width, m_height, GL_RGB, GL_UNSIGNED_BYTE, m_pixel_buffer.data());
+}
+
+std::istream &bresenham::operator>>(std::istream &in, bresenham::figure &fig) {
+    in.exceptions(std::istream::badbit);
+
+    std::string command;
+    while (std::getline(in, command)) {
+        // std::cout << "======================" << std::endl;
+        // std::cout << command << std::endl;
+        std::stringstream ss(command);
+        std::string op;
+        ss >> op;
+        if (op == "sc") {
+            bresenham::color col;
+            ss >> col.r >> col.g >> col.b;
+            fig.set_color(col);
+        } else if (op == "al") {
+            uint x1, y1, x2, y2;
+            ss >> x1 >> y1 >> x2 >> y2;
+            y1 = 900 - y1, y2 = 900 - y2;
+            fig.add_line(x1, y1, x2, y2);
+        } else if (op == "ac") {
+            uint cx, cy, radius;
+            ss >> cx >> cy >> radius;
+            cy = 900 - cy;
+            fig.add_circle(cx, cy, radius);
+        } else if (op == "ae") {
+            uint cx, cy, a, b;
+            ss >> cx >> cy >> a >> b;
+            cy = 900 - cy;
+            fig.add_ellipse(cx, cy, a, b);
+        } else if (op == "fill") {
+            uint x, y;
+            bresenham::color col;
+            ss >> x >> y >> col.r >> col.g >> col.b;
+            fig.fill(x, y, col);
+        } else {
+            continue;
+        }
+    }
+
+    return in;
 }

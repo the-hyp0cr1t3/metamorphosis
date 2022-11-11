@@ -7,7 +7,7 @@ check_ipo_supported(RESULT ipo_found OUTPUT ipo_output)
 
 if(NOT ipo_found)
   message(WARNING "Link Time Optimization not supported: ${ipo_output}")
-elseif(Bresenham_USE_CLANG_TIDY)
+elseif(${PROJECT_NAME}_USE_CLANG_TIDY)
   message(STATUS "Disabling Link Time Optimization because of clang-tidy")
 else()
   message(STATUS "Link Time Optimization enabled")

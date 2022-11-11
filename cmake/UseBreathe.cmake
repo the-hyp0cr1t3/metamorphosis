@@ -1,9 +1,18 @@
 find_package(Doxygen REQUIRED)
+message(STATUS "Found Doxygen: " ${DOXYGEN_EXECUTABLE})
+
 find_package(Perl REQUIRED)
+message(STATUS "Found Perl: " ${PERL_EXECUTABLE})
+
 find_package(Python REQUIRED)
+message(STATUS "Found Python: " ${Python_EXECUTABLE})
+
 find_package(Sphinx REQUIRED)
+message(STATUS "Found Sphinx: " ${SPHINX_EXECUTABLE})
+
 include(FindPythonModule)
 find_python_module(breathe REQUIRED)
+message(STATUS "Found Breathe: " ${breathe})
 
 function(add_breathe_doc)
   set(options)
@@ -27,15 +36,10 @@ function(add_breathe_doc)
   configure_file(${BREATHE_DOC_DOXY_FILE} ${BREATHE_DOC_BUILD_DIR}/Doxyfile
                  @ONLY)
 
-  cmake_print_variables(
-    SPHINX_EXECUTABLE BREATHE_DOC_BUILD_DIR BREATHE_DOC_CACHE_DIR
-    BREATHE_DOC_SOURCE_DIR BREATHE_DOC_HTML_DIR)
-
-  # Add -q
   add_custom_target(
     ${BREATHE_DOC_TARGET_NAME}
     COMMAND
-      ${SPHINX_EXECUTABLE} -b html -c ${BREATHE_DOC_BUILD_DIR} -d
+      ${SPHINX_EXECUTABLE} -q -b html -c ${BREATHE_DOC_BUILD_DIR} -d
       ${BREATHE_DOC_CACHE_DIR} ${BREATHE_DOC_SOURCE_DIR} ${BREATHE_DOC_HTML_DIR}
     COMMENT
       "Building ${BREATHE_DOC_TARGET_NAME} documentation with Breathe, Sphinx and Doxygen"
@@ -43,6 +47,6 @@ function(add_breathe_doc)
 
   message(
     STATUS
-      "Added ${BREATHE_DOC_TARGET_NAME} [Breathe+Sphinx+Doxygen] target to build documentation"
+      "Added ${BREATHE_DOC_TARGET_NAME} [Doxygen + Sphinx + Breathe] target to build documentation"
   )
 endfunction()
