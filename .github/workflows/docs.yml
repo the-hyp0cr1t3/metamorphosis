@@ -26,6 +26,9 @@ jobs:
           cmake .. -D BUILD_ONLY_DOCS=ON
           make docs
           touch docs/html/.nojekyll
+          mkdir -p docs/html/docs
+          touch docs/html/.nojekyll
+          touch docs/html/docs/.nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
