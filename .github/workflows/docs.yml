@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install doxygen libxrandr-dev libxinerama-dev -q -y
+          sudo apt-get install doxygen -q -y
           pip install -r docs/requirements.txt
 
       - name: Build
