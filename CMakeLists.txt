@@ -4,7 +4,7 @@ project(
   Metamorphosis
   VERSION 1.0
   DESCRIPTION "Metamorphosis, a short film; Powered by Bresenham, a rasterization algorithm."
-  HOMEPAGE_URL "https://github.com/the-hyp0cr1t3/rasterization-algos"
+  HOMEPAGE_URL "https://github.com/the-hyp0cr1t3/metamorphosis"
   LANGUAGES CXX C)
 
 
@@ -143,27 +143,24 @@ add_install_rpath_support(
   INSTALL_NAME_DIR "${CMAKE_INSTALL_FULL_LIBDIR}"
   USE_LINK_PATH)
 
-if(NOT CMAKE_SKIP_INSTALL_RULES)
-  install_basic_package_files(Bresenham
-    VERSION ${PROJECT_VERSION}
-    COMPATIBILITY AnyNewerVersion
-    EXPORT Bresenham
-    VARS_PREFIX Bresenham
-    NAMESPACE Bresenham::
-    NO_SET_AND_CHECK_MACRO
-    NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+install_basic_package_files(Bresenham
+  VERSION ${PROJECT_VERSION}
+  COMPATIBILITY AnyNewerVersion
+  EXPORT Bresenham
+  VARS_PREFIX Bresenham
+  NAMESPACE Bresenham::
+  NO_SET_AND_CHECK_MACRO
+  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
 
-  install(
-    DIRECTORY ${PROJECT_SOURCE_DIR}/include/
-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
-    COMPONENT Bresenham_Development
-    FILES_MATCHING
-      PATTERN "*.h"
-      PATTERN "*.hpp"
-      PATTERN "*.hxx"
-  )
-
-endif()
+install(
+  DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+  COMPONENT Bresenham_Development
+  FILES_MATCHING
+    PATTERN "*.h"
+    PATTERN "*.hpp"
+    PATTERN "*.hxx"
+)
 
 
 #---------------------------
