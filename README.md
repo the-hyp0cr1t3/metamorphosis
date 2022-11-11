@@ -1,12 +1,5 @@
-# Rasterization using the Bresenham algorithm
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat magna sed bibendum semper.
-
-## Highlights
-* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-* Ut volutpat odio nec justo euismod euismod.
-* Morbi sed ligula vitae nibh laoreet sodales ut a mauris.
-* Cras ut ligula condimentum, elementum justo vel, condimentum diam.
-* Proin eget felis sit amet arcu dictum sodales.
+# Metamorphosis
+A short story film, rendered using OpenGL (having implemented the Bresenham midpoint algorithm for rasterization).
 
 ## Build Instructions
 
@@ -29,10 +22,5 @@ sudo make install
 ## Usage
 
 ```console
-foo@bar:~$ app --help
-Usage: app [options]
-
-Optional arguments:
--h --help                               shows help message and exits [default: false]
--v --version                            prints version information and exits [default: false]
+foo@bar:~$ render [input_file]
 ```

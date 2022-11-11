@@ -26,14 +26,14 @@ flags to make it behave properly. See the `flags-windows` preset in the
 
 The following options can be passed to cmake for finer control.
 
-* `Bresenham_BUILD_DOCS` (default: `ON`): Builds documentation. Open `build/docs/html/index.html` to view them.
-* `Bresenham_BUILD_EXAMPLES` (default: `ON`): Builds example programs in `examples/`.
+* `Metamorphosis_BUILD_DOCS` (default: `ON`): Builds documentation. Open `build/docs/html/index.html` to view them.
+* `Metamorphosis_BUILD_EXAMPLES` (default: `ON`): Builds example programs in `examples/`.
 
 <details>
     <summary>Example</summary>
 
 ```bash
-cmake -S . -B build -D Bresenham_BUILD_DOCS=OFF -D Bresenham_BUILD_EXAMPLES=OFF
+cmake -S . -B build -D Metamorphosis_BUILD_DOCS=OFF -D Metamorphosis_BUILD_EXAMPLES=OFF
 ```
 
 </details>
