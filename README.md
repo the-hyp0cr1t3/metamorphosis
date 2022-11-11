@@ -6,8 +6,8 @@ A short story film, rendered using OpenGL (having implemented the Bresenham midp
 Build using [CMake](https://cmake.org/). For more details, see [BUILDING.md](BUILDING.md).
 
 ```bash
-git clone git@github.com:the-hyp0cr1t3/rasterization-algos.git
-cd rasterization-algos
+git clone git@github.com:the-hyp0cr1t3/metamorphosis.git
+cd metamorphosis
 
 # Build
 mkdir build
