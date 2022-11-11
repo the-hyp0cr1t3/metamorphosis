@@ -161,6 +161,6 @@ class figure {
     color m_rgb;
 };
 
-std::istream &operator>>(std::istream &is, figure &fig);
-
 }  // namespace bresenham
+
+std::istream &operator>>(std::istream &is, bresenham::figure &fig);

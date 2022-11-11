@@ -43,20 +43,18 @@ void bresenham::figure::draw() {
       m_width, m_height, GL_RGB, GL_UNSIGNED_BYTE, m_pixel_buffer.data());
 }
 
-std::istream &bresenham::operator>>(std::istream &in, bresenham::figure &fig) {
+std::istream &operator>>(std::istream &in, bresenham::figure &fig) {
     in.exceptions(std::istream::badbit);
 
     std::string command;
     while (std::getline(in, command)) {
-        // std::cout << "======================" << std::endl;
-        // std::cout << command << std::endl;
         std::stringstream ss(command);
         std::string op;
         ss >> op;
         if (op == "sc") {
-            bresenham::color col;
-            ss >> col.r >> col.g >> col.b;
-            fig.set_color(col);
+            uint r, g, b;
+            ss >> r >> g >> b;
+            fig.set_color({r, g, b});
         } else if (op == "al") {
             uint x1, y1, x2, y2;
             ss >> x1 >> y1 >> x2 >> y2;
@@ -73,10 +71,9 @@ std::istream &bresenham::operator>>(std::istream &in, bresenham::figure &fig) {
             cy = 900 - cy;
             fig.add_ellipse(cx, cy, a, b);
         } else if (op == "fill") {
-            uint x, y;
-            bresenham::color col;
-            ss >> x >> y >> col.r >> col.g >> col.b;
-            fig.fill(x, y, col);
+            uint x, y, r, g, b;
+            ss >> x >> y >> r >> g >> b;
+            fig.fill(x, y, {r, g, b});
         } else {
             continue;
         }
