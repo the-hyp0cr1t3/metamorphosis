@@ -1,6 +1,8 @@
 # Metamorphosis
 A short story film, rendered using OpenGL (having implemented the Bresenham midpoint algorithm for rasterization).
 
+View the documentation [here](https://the-hyp0cr1t3.github.io/metamorphosis/).
+
 ## Build Instructions
 
 Build using [CMake](https://cmake.org/). For more details, see [BUILDING.md](BUILDING.md).
