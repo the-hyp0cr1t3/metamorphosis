@@ -27,7 +27,7 @@ flags to make it behave properly. See the `flags-windows` preset in the
 The following options can be passed to cmake for finer control.
 
 * `Metamorphosis_BUILD_DOCS` (default: `ON`): Builds documentation. Open `build/docs/html/index.html` to view them.
-* `Metamorphosis_BUILD_EXAMPLES` (default: `ON`): Builds example programs in `examples/`.
+* `Metamorphosis_BUILD_EXAMPLES` (default: `ON`): Builds example programs in `example/`.
 
 <details>
     <summary>Example</summary>
@@ -37,6 +37,20 @@ cmake -S . -B build -D Metamorphosis_BUILD_DOCS=OFF -D Metamorphosis_BUILD_EXAMP
 ```
 
 </details>
+
+## Docs
+
+Build documentation with [Doxygen](https://doxygen.nl/) + [Sphinx](https://www.sphinx-doc.org/en/master/) + [Breathe](https://breathe.readthedocs.io/en/latest/).
+
+Install dependencies:
+```sh
+pip install -r docs/requirements.txt
+```
+
+Build the docs:
+```sh
+cmake --build build --target docs
+```
 
 ## Install
 

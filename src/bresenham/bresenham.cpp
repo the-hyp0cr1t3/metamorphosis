@@ -48,8 +48,8 @@ std::istream &bresenham::operator>>(std::istream &in, bresenham::figure &fig) {
 
     std::string command;
     while (std::getline(in, command)) {
-        std::cout << "======================" << std::endl;
-        std::cout << command << std::endl;
+        // std::cout << "======================" << std::endl;
+        // std::cout << command << std::endl;
         std::stringstream ss(command);
         std::string op;
         ss >> op;
@@ -81,7 +81,6 @@ std::istream &bresenham::operator>>(std::istream &in, bresenham::figure &fig) {
             continue;
         }
     }
-    std::cout << "Finished reading file" << std::endl;
 
     return in;
 }

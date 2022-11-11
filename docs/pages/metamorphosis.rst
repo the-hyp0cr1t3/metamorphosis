@@ -6,7 +6,7 @@ We all have our cocoons to break out of. We all see the light at the end of our 
 Storyboard
 ----------
 
-.. video:: _static/storyboard.mp4
+.. video:: ../_images/storyboard.mp4
    :width: 500
    :height: 300
 
