@@ -58,17 +58,14 @@ std::istream &operator>>(std::istream &in, bresenham::figure &fig) {
         } else if (op == "al") {
             uint x1, y1, x2, y2;
             ss >> x1 >> y1 >> x2 >> y2;
-            y1 = 900 - y1, y2 = 900 - y2;
             fig.add_line(x1, y1, x2, y2);
         } else if (op == "ac") {
             uint cx, cy, radius;
             ss >> cx >> cy >> radius;
-            cy = 900 - cy;
             fig.add_circle(cx, cy, radius);
         } else if (op == "ae") {
             uint cx, cy, a, b;
             ss >> cx >> cy >> a >> b;
-            cy = 900 - cy;
             fig.add_ellipse(cx, cy, a, b);
         } else if (op == "fill") {
             uint x, y, r, g, b;
