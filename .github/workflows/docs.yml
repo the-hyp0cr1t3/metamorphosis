@@ -23,8 +23,7 @@ jobs:
           set -x
           mkdir build
           cd build
-          cmake ..
-          make
+          cmake .. -D BUILD_ONLY_DOCS=ON
           make docs
 
       - name: Deploy 🚀

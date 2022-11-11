@@ -33,6 +33,10 @@ if(${PROJECT_NAME}_DEVELOPER_MODE)
   include(ClangTidy)
 endif()
 
+if(BUILD_ONLY_DOCS)
+  add_subdirectory(docs)
+  return()
+endif()
 
 #---------------------------
 # Build type
