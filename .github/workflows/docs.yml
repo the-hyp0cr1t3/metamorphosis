@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install doxygen -q -y
+          sudo apt-get install doxygen libxrandr-dev -q -y
           pip install -r docs/requirements.txt
 
       - name: Build
