@@ -1,0 +1,42 @@
+name: Build and Deploy
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+        run: |
+          pip install -r docs/requirements.txt
+          sudo apt-get update -q
+          sudo apt-get install doxygen -q -y
+
+      - name: Configure
+        run: |
+          set -x
+          mkdir build
+          cd build
+          cmake ..
+          make
+          make docs
+
+      - name: Build
+        run: cmake --build build --config Release -j 2
+
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/docs/html
