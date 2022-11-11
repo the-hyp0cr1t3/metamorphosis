@@ -25,6 +25,7 @@ jobs:
           cd build
           cmake .. -D BUILD_ONLY_DOCS=ON
           make docs
+          touch build/docs/html/.nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
