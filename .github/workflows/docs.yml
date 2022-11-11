@@ -19,7 +19,7 @@ jobs:
           sudo apt-get update -q
           sudo apt-get install doxygen -q -y
 
-      - name: Configure
+      - name: Build
         run: |
           set -x
           mkdir build
@@ -27,14 +27,6 @@ jobs:
           cmake ..
           make
           make docs
-
-      - name: Build
-        run: cmake --build build --config Release -j 2
-
-      - name: Install and Build 🔧
-        run: |
-          npm ci
-          npm run build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
