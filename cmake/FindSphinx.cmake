@@ -18,8 +18,8 @@
 find_program(
   SPHINX_EXECUTABLE
   NAMES sphinx-build
-  HINTS $ENV{SPHINX_DIR}
-  HINTS ${SPHINX_ROOT}/bin
+  # HINTS $ENV{SPHINX_DIR}
+  # HINTS ${SPHINX_ROOT}/bin
   PATH_SUFFIXES bin
   DOC "Sphinx documentation generator")
 

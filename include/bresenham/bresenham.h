@@ -6,6 +6,7 @@
 
 #include <glad/glad.h>
 #include <vector>
+#include <fstream>
 
 /// For the sake of brevity.
 using uint = unsigned int;
@@ -159,5 +160,7 @@ class figure {
     // The color to be used by the `add_*()` primitives.
     color m_rgb;
 };
+
+std::istream &operator>>(std::istream &is, figure &fig);
 
 }  // namespace bresenham

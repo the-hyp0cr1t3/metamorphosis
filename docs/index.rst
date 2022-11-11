@@ -5,9 +5,9 @@ Contents
 .. toctree::
    :maxdepth: 3
 
-   metamorphosis
-   algorithms
-   code-reference
-   about-us
+   pages/metamorphosis
+   pages/algorithms
+   pages/code-reference
+   pages/about-us
 
 * :ref:`genindex`

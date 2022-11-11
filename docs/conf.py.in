@@ -1,4 +1,4 @@
-#!@PYTHON_EXECUTABLE@
+#!@Python_EXECUTABLE@
 # -*- coding: utf-8 -*-
 
 import os
@@ -24,10 +24,6 @@ breathe_default_project = "@PROJECT_NAME@"
 # -- Options for HTML output -----------
 
 html_theme = "renku"
-
-html_static_path = ["_static"]
-
-html_css_files = ["css/style.css"]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -66,4 +62,3 @@ def run_doxygen(folder):
 
 def setup(app):
     run_doxygen("@BREATHE_DOC_BUILD_DIR@")
-    app.add_css_file('css/style.css')
