@@ -1,18 +1,10 @@
 find_package(Doxygen REQUIRED)
-message(STATUS "Found Doxygen: " ${DOXYGEN_EXECUTABLE})
-
 find_package(Perl REQUIRED)
-message(STATUS "Found Perl: " ${PERL_EXECUTABLE})
-
 find_package(Python REQUIRED)
-message(STATUS "Found Python: " ${Python_EXECUTABLE})
-
 find_package(Sphinx REQUIRED)
-message(STATUS "Found Sphinx: " ${SPHINX_EXECUTABLE})
 
 include(FindPythonModule)
 find_python_module(breathe REQUIRED)
-message(STATUS "Found Breathe: " ${breathe})
 
 function(add_breathe_doc)
   set(options)
@@ -29,6 +21,14 @@ function(add_breathe_doc)
 
   cmake_parse_arguments(BREATHE_DOC "${options}" "${oneValueArgs}"
                         "${multiValueArgs}" ${ARGN})
+
+  if(NOT DEFINED BREATHE_DOC_BUILD_DIR)
+    set(BREATHE_DOC_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/_build)
+  endif()
+
+  if(NOT DEFINED BREATHE_DOC_CACHE_DIR)
+    set(BREATHE_DOC_CACHE_DIR ${CMAKE_CURRENT_BINARY_DIR}/_doctrees)
+  endif()
 
   configure_file(${BREATHE_DOC_CONF_FILE} ${BREATHE_DOC_BUILD_DIR}/conf.py
                  @ONLY)
