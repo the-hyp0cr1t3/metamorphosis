@@ -67,7 +67,12 @@ class figure {
      */
     figure(uint width, uint height);
 
-        void flip_vertically(bool flip);
+    /**
+     * @brief Sets the state so that all figures drawn are flipped vertically.
+     * 
+     * @param flip A boolean that tells whether to set the flip state.
+     */
+    void flip_vertically(bool flip);
 
     /**
      * \brief Sets the pixel drawing color `m_rgb`.
