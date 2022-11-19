@@ -68,6 +68,13 @@ class figure {
     figure(uint width, uint height);
 
     /**
+     * @brief Sets the state so that all figures drawn are flipped vertically.
+     * 
+     * @param flip A boolean that tells whether to set the flip state.
+     */
+    void flip_vertically(bool flip);
+
+    /**
      * \brief Sets the pixel drawing color `m_rgb`.
      *
      * Any `add_*()` commands will use the currently set `m_rgb` value.
@@ -149,6 +156,7 @@ class figure {
    private:
     /// An internal function to get the color of a pixel at given coordinates
     auto get_pixel_color(uint x, uint y) -> color;
+    bool m_flip = false;
 
    protected:
     uint m_width;  ///< The width of the screen in pixels.
