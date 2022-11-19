@@ -19,7 +19,6 @@ void process_input(GLFWwindow *window) {
 }
 
 auto main(int argc, char **argv) -> int {
-
     if (argc == 1) {
         std::cerr << "Usage: ./render [file]" << std::endl;
         return 1;
@@ -28,7 +27,7 @@ auto main(int argc, char **argv) -> int {
     std::string file = argv[1];
     std::ifstream file_in(file);
 
-    if(!file_in.is_open())
+    if (!file_in.is_open())
         throw std::iostream::failure("Could not open " + file);
 
     // glfw: initialize and configure
@@ -49,13 +48,14 @@ auto main(int argc, char **argv) -> int {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     // glad: load OpenGL function pointers
-    if (gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)) == 0) {
+    if (gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))
+      == 0) {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
 
-
     bresenham::figure fig(screen_width, screen_height);
+    // fig.flip_vertically(true);
     file_in >> fig;
 
     // render loop

@@ -8,6 +8,8 @@
 bresenham::figure::figure(uint width, uint height)
   : m_width(width), m_height(height), m_pixel_buffer(width * height * 3, 255) {}
 
+void bresenham::figure::flip_vertically(bool flip) { m_flip = flip; }
+
 void bresenham::figure::set_color(color rgb) { m_rgb = rgb; }
 
 auto bresenham::figure::get_pixel_color(uint x, uint y) -> bresenham::color {
@@ -18,6 +20,8 @@ auto bresenham::figure::get_pixel_color(uint x, uint y) -> bresenham::color {
 
 void bresenham::figure::add_pixel(uint x, uint y) {
     if (x >= m_width || y >= m_height) return;
+
+    if (m_flip) y = m_height - y;
 
     uint pos = (x + y * m_width) * 3;
     m_pixel_buffer[pos] = m_rgb.r;
@@ -68,7 +72,8 @@ std::istream &operator>>(std::istream &in, bresenham::figure &fig) {
             ss >> cx >> cy >> a >> b;
             fig.add_ellipse(cx, cy, a, b);
         } else if (op == "fill") {
-            uint x, y, r, g, b;
+            uint x, y;
+            uint r, g, b;
             ss >> x >> y >> r >> g >> b;
             fig.fill(x, y, {r, g, b});
         } else {

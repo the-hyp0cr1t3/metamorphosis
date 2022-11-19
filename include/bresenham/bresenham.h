@@ -67,6 +67,8 @@ class figure {
      */
     figure(uint width, uint height);
 
+        void flip_vertically(bool flip);
+
     /**
      * \brief Sets the pixel drawing color `m_rgb`.
      *
@@ -149,6 +151,7 @@ class figure {
    private:
     /// An internal function to get the color of a pixel at given coordinates
     auto get_pixel_color(uint x, uint y) -> color;
+    bool m_flip = false;
 
    protected:
     uint m_width;  ///< The width of the screen in pixels.
