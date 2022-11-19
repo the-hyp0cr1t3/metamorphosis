@@ -21,7 +21,7 @@ auto bresenham::figure::get_pixel_color(uint x, uint y) -> bresenham::color {
 void bresenham::figure::add_pixel(uint x, uint y) {
     if (x >= m_width || y >= m_height) return;
 
-    if (m_flip) y = m_height - y;
+    if (m_flip) y = m_height - y - 1;
 
     uint pos = (x + y * m_width) * 3;
     m_pixel_buffer[pos] = m_rgb.r;
@@ -30,9 +30,16 @@ void bresenham::figure::add_pixel(uint x, uint y) {
 }
 
 void bresenham::figure::fill(uint ix, uint iy, color boundary_color) {
-    if (ix >= m_width || iy >= m_height || m_rgb == get_pixel_color(ix, iy)
-      || boundary_color == get_pixel_color(ix, iy))
-        return;
+    if (m_flip) {
+        if (ix >= m_width || iy >= m_height
+          || m_rgb == get_pixel_color(ix, m_height - iy - 1)
+          || boundary_color == get_pixel_color(ix, m_height - iy - 1))
+            return;
+    } else {
+        if (ix >= m_width || iy >= m_height || m_rgb == get_pixel_color(ix, iy)
+          || boundary_color == get_pixel_color(ix, iy))
+            return;
+    }
 
     add_pixel(ix, iy);
 

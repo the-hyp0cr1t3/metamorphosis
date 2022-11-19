@@ -55,7 +55,7 @@ auto main(int argc, char **argv) -> int {
     }
 
     bresenham::figure fig(screen_width, screen_height);
-    // fig.flip_vertically(true);
+    fig.flip_vertically(true);
     file_in >> fig;
 
     // render loop
